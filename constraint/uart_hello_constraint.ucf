@@ -1,0 +1,9 @@
+NET "clk" LOC = V10;
+NET "pause" LOC = C4;
+NET "tx" LOC = N18;
+NET "tx_debug" LOC = G11;
+
+NET "clk" IOSTANDARD = LVCMOS33;
+NET "pause" IOSTANDARD = LVCMOS33;
+NET "tx" IOSTANDARD = LVCMOS33;
+NET "tx_debug" IOSTANDARD = LVCMOS33;
