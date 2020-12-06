@@ -2,6 +2,9 @@
 
 Verilog code to send "Hello World\n" through UART at specified baud rate.
 
+Here is the signal captured with [PulseView](https://sigrok.org/wiki/PulseView):
+![](https://raw.githubusercontent.com/d4nk3n/Blog/master/2020-12-uart/uart-send-hello.jpg)
+
 It works fine on Digilent Nexys3 Board, with Xilinx Spartan-6 LX16 FPGA.
 
 NOTE: The synthesizer XST gives several WARNINGS that I haven't handled yet, I'm not sure whether they can be ignored.
