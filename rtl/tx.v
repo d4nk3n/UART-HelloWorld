@@ -17,8 +17,8 @@ initial tx = 1'b1;
 
 localparam STATE_IDLE   = 2'b00;
 localparam STATE_START  = 2'b01;
-localparam STATE_DATA   = 2'b10;
-localparam STATE_STOP   = 2'b11;
+localparam STATE_DATA   = 2'b11;
+localparam STATE_STOP   = 2'b10;
 
 reg [7:0] data      = 8'h00;
 reg [2:0] bitpos    = 3'h0;
@@ -61,6 +61,6 @@ always @(posedge clk) begin
     endcase
 end
 
-assign tx_busy = (state != STATE_IDLE);
+assign tx_busy = (state == STATE_START || state == STATE_DATA);
 
 endmodule
