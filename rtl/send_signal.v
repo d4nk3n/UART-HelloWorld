@@ -14,19 +14,19 @@ module send_signal#(
     output      send
 );
 
-parameter SEND_RATE         = 1;                        // send once every 1s
-parameter SEND_CNT_MAX      = FREQ_CLKIN / SEND_RATE;
-parameter SEND_CNT_WIDTH    = $clog2(SEND_CNT_MAX);
+    parameter SEND_RATE         = 1;                        // send once every 1s
+    parameter SEND_CNT_MAX      = FREQ_CLKIN / SEND_RATE;
+    parameter SEND_CNT_WIDTH    = $clog2(SEND_CNT_MAX);
 
-reg [SEND_CNT_WIDTH - 1:0] cnt = 0;
+    reg [SEND_CNT_WIDTH - 1:0] cnt = 0;
 
-always@(posedge clk) begin
-    cnt = cnt + 1'b1;
-    if (cnt == SEND_CNT_MAX) begin
-        cnt = 0;
+    always@(posedge clk) begin
+        cnt <= cnt + 1'b1;
+        if (cnt == SEND_CNT_MAX) begin
+            cnt <= 0;
+        end
     end
-end
 
-assign send = (~pause) ? (cnt == 1) : 1'b0;
+    assign send = pause ? 1'b0 : (cnt == 1);
 
 endmodule

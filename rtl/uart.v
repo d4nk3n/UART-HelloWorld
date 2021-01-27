@@ -17,24 +17,24 @@ module uart#(
     output          tx_busy
 );
 
-wire tx_clk;
+    wire tx_clk;
 
-baud_clk#(
-    .FREQ_CLKIN(FREQ_CLKIN),
-    .BAUD_RATE(BAUD_RATE)
-)
-U_baud_clk(
-    .clk(clk),
-    .tx_clk(tx_clk)
-);
+    baud_clk#(
+        .FREQ_CLKIN(FREQ_CLKIN),
+        .BAUD_RATE(BAUD_RATE)
+    )
+    U_baud_clk(
+        .clk(clk),
+        .tx_clk(tx_clk)
+    );
 
-tx U_tx(
-    .data_in(data_in),
-    .wr_en(wr_en),
-    .clk(clk),
-    .tx_clk(tx_clk),
-    .tx(tx),
-    .tx_busy(tx_busy)
-);
+    tx U_tx(
+        .data_in(data_in),
+        .wr_en(wr_en),
+        .clk(clk),
+        .tx_clk(tx_clk),
+        .tx(tx),
+        .tx_busy(tx_busy)
+    );
 
 endmodule
